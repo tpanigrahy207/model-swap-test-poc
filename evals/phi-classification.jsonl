@@ -1,0 +1,16 @@
+{"id":"phi-001","input":"Patient Maya Ellison, DOB 04/19/1978, reports dizziness after starting medication.","expected":"CONTAINS_PHI","rationale":"Direct name and date of birth."}
+{"id":"phi-002","input":"A 48-year-old patient in the cardiology cohort reported dizziness after medication change.","expected":"NO_PHI","rationale":"Aggregate-style clinical statement without direct identifiers."}
+{"id":"phi-003","input":"MRN QX-441902 belongs to Jordan Patel and requires follow-up labs.","expected":"CONTAINS_PHI","rationale":"Medical record number and name."}
+{"id":"phi-004","input":"Thirty-two percent of sampled records had incomplete medication reconciliation.","expected":"NO_PHI","rationale":"De-identified aggregate quality metric."}
+{"id":"phi-005","input":"Call Lena Ortiz at 312-555-0198 about her imaging appointment.","expected":"CONTAINS_PHI","rationale":"Name and phone number tied to care."}
+{"id":"phi-006","input":"The discharge summary template should include a field for follow-up appointment date.","expected":"NO_PHI","rationale":"Template discussion without a person's data."}
+{"id":"phi-007","input":"Room 412B asked whether he can take ibuprofen before surgery tomorrow.","expected":"CONTAINS_PHI","rationale":"Room and care context may identify an active patient."}
+{"id":"phi-008","input":"For the demo, use a fake patient named Alex Example with MRN DEMO-0000.","expected":"NO_PHI","rationale":"Clearly marked fake demonstration data."}
+{"id":"phi-009","input":"Nora Chen's lab result on 2026-02-11 showed potassium at 5.8.","expected":"CONTAINS_PHI","rationale":"Name, date, and lab result."}
+{"id":"phi-010","input":"The model should flag direct identifiers before the note is sent to the billing workflow.","expected":"NO_PHI","rationale":"Policy statement without patient data."}
+{"id":"phi-011","input":"Employee badge A17 reviewed three anonymized charts during training.","expected":"NO_PHI","rationale":"Workforce activity, no patient identifier or health data."}
+{"id":"phi-012","input":"Send the prescription renewal to samira.woods@example.test for Samira Woods.","expected":"CONTAINS_PHI","rationale":"Email and name tied to prescription action."}
+{"id":"phi-013","input":"Zip code 02139 appears in 2,417 rows of the claims extract.","expected":"NO_PHI","rationale":"Aggregate count; no individual health record."}
+{"id":"phi-014","input":"The only pediatric transplant patient in Alpine County was readmitted on May 4.","expected":"CONTAINS_PHI","rationale":"Indirect identifier in a small population clinical context."}
+{"id":"phi-015","input":"Replace patient names with tokens before sending records to the summarization step.","expected":"NO_PHI","rationale":"Operational instruction without real patient content."}
+{"id":"phi-016","input":"Carlos Rivera, policy ID PX-9081, needs prior authorization for the MRI.","expected":"CONTAINS_PHI","rationale":"Name and insurance/policy identifier linked to care."}

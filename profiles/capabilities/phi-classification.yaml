@@ -1,0 +1,30 @@
+id: phi-classification
+name: PHI presence classification
+description: Classify whether a text contains protected health information or identifiable health context.
+system_prompt: |
+  You classify text for PHI risk. Return exactly one label:
+  CONTAINS_PHI or NO_PHI.
+prompt_template: |
+  Text:
+  {input}
+
+  Label:
+eval_set: evals/phi-classification.jsonl
+labels: [CONTAINS_PHI, NO_PHI]
+critical_label: CONTAINS_PHI
+critical_terms: [direct, name, date of birth, phone, email, record number]
+critical_false_negative_reason: false negatives on direct identifiers
+acceptance:
+  min_accuracy: 0.9
+  zero_critical_false_negatives: true
+max_recovery_window_minutes: 120
+declared_integration_overhead_minutes: 30
+fallback_procedure: Route uncertain or failed classifications to human privacy review before downstream use.
+tool_contracts:
+  - name: classify_phi
+    input_schema: text
+    output_schema: CONTAINS_PHI | NO_PHI
+policy_constraints:
+  - Synthetic or approved evaluation data only.
+  - No write action without human approval.
+  - High-impact classifications require retained evidence.

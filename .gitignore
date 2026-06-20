@@ -1,0 +1,15 @@
+.env
+.venv/
+.venv311/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+*.egg-info/
+*.report.json
+.mst-state/
+
+# Local-only assets (not for the public repo)
+*.png
+2026-06-17-model-swap-test-build-brief.md
+AGENTS.md

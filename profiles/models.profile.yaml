@@ -1,0 +1,29 @@
+# Refreshable implementation profile.
+# Endpoint ids, hosts, environment variables, and model identifiers live here.
+# Durable capability logic belongs in core/ and must not depend on this file's names.
+endpoints:
+  mock:
+    adapter: mock
+    model: deterministic-reference
+    latency_ms: 20
+  mock-degraded:
+    adapter: mock_degraded
+    model: deterministic-degraded
+    latency_ms: 20
+  anthropic-default:
+    adapter: anthropic
+    api_key_env: ANTHROPIC_API_KEY
+    model: claude-3-5-sonnet-latest
+    timeout_seconds: 45
+    # USD per 1k tokens. Refreshable — update when the price list changes.
+    price_per_1k_input: 0.003
+    price_per_1k_output: 0.015
+  ollama-local:
+    adapter: ollama
+    host_env: OLLAMA_HOST
+    default_host: http://localhost:11434
+    model: qwen2.5:14b
+    timeout_seconds: 120
+    # Local inference: no per-token charge, but tokens are still measured.
+    price_per_1k_input: 0.0
+    price_per_1k_output: 0.0

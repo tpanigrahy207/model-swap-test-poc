@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install
+        run: pip install -e ".[dev]"
+      - name: Lint
+        run: ruff check .
+      - name: Type check
+        run: mypy core adapters cli.py
+      - name: Test
+        run: pytest -q
+
+  core-purity:
+    # The central claim of this repo: core/ governs the capability, not the model.
+    # This job fails the build if a model or provider name leaks into core/.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Assert core/ is model- and provider-agnostic
+        run: |
+          if grep -RInE "anthropic|ollama|claude|qwen|sonnet|openai|gpt|llama|gemini|mistral" core; then
+            echo "FAIL: a model or provider name leaked into core/"
+            exit 1
+          fi
+          echo "PASS: core/ contains no model or provider names"
