@@ -51,7 +51,7 @@ Copy the environment template:
 cp .env.example .env
 ```
 
-Configure `ANTHROPIC_API_KEY` for the hosted adapter and make sure Ollama is running locally for the local adapter. Endpoint names and model identifiers live only in [profiles/models.profile.yaml](/Users/ommvirpanda/Documents/Second-Brain/03-Prototypes/model-swap-test/profiles/models.profile.yaml).
+Configure `ANTHROPIC_API_KEY` for the hosted adapter and make sure Ollama is running locally for the local adapter. Endpoint names and model identifiers live only in [profiles/models.profile.yaml](profiles/models.profile.yaml).
 
 ```bash
 mst run profiles/capabilities/phi-classification.yaml --incumbent anthropic-default --candidate ollama-local
@@ -73,7 +73,9 @@ The repo intentionally separates durable capability logic from refreshable endpo
 
 ## Architecture
 
-![Sovereign control plane](/Users/ommvirpanda/Documents/Second-Brain/03-Prototypes/model-swap-test/docs/control-plane.svg)
+![Enterprise control plane over replaceable endpoints](docs/control-plane.svg)
+
+A full **[reference architecture](docs/reference-architecture.md)** maps each layer below to the modules that implement it, marks what is implemented vs. aspirational, and shows the runtime flow of a swap test.
 
 | Layer | Responsibility | Failure controlled |
 |---|---|---|
