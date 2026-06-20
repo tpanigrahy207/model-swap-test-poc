@@ -4,7 +4,7 @@
 
 The thesis: the durable asset is the *capability contract* — the eval set, the acceptance criteria, and the definition of an unacceptable failure. The model is a swappable component that must requalify against that contract before it ships. A capability passes the Model-Swap Test when its endpoint can be replaced while preserving the business capability within an acceptable recovery window.
 
-This repo does not recommend a provider. It asks whether the assets needed to requalify a substitute actually exist — prompts, policies, eval evidence, tool contracts, fallback procedures, and acceptance criteria — and then measures a candidate against the incumbent on the capability's own bar.
+This repo does not recommend a provider. It asks whether the assets needed to requalify a substitute actually exist — prompts, policies, eval evidence, tool contracts, fallback procedures, and acceptance criteria — and then measures a candidate against the incumbent on the capability's own bar. See [docs/model-swap-test.md](docs/model-swap-test.md) for the concept in full and [docs/reference-architecture.md](docs/reference-architecture.md) for how it maps to the code.
 
 > **Note on data:** the bundled PHI eval set (`evals/phi-classification.jsonl`) is fully synthetic. Names, dates, and identifiers were invented for this repo and contain no real PHI.
 
@@ -99,7 +99,7 @@ Reports are printed to the terminal and written as `<capability>.report.json`. R
 
 ## Extending It
 
-The Tier 3 control-plane seam is deliberate:
+The control-plane seam is deliberate:
 
 - Implement `PolicyGate` when request authorization and endpoint eligibility need to be enforced before routing.
 - Replace the JSONL `EnterpriseState` with a database, event stream, warehouse, or governed evidence store.
@@ -114,6 +114,6 @@ The Tier 3 control-plane seam is deliberate:
 
 ## Sources and Attribution
 
-This prototype implements the Model-Swap Test and control-plane framing from the Sovereign Token Capital essay. The architecture here is original framework code and documentation, not a claim from the cited research. Routing literature that informed the broader framing includes FrugalGPT, RouteLLM, and calibrated cascade-routing work.
+The Model-Swap Test framing and this implementation are original work. Routing literature that informed the broader thinking includes FrugalGPT, RouteLLM, and calibrated cascade-routing work; this repo does not claim results from that research.
 
 Licensed under Apache-2.0.

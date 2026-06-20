@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="960" height="440" viewBox="0 0 960 440" role="img" aria-labelledby="title desc">
-  <title id="title">Sovereign control plane with replaceable endpoints</title>
+  <title id="title">Enterprise control plane with replaceable endpoints</title>
   <desc id="desc">Enterprise-owned control layers route requests to replaceable model endpoints.</desc>
   <rect width="960" height="440" fill="#f7f8fa"/>
   <rect x="52" y="52" width="610" height="336" rx="8" fill="#ffffff" stroke="#1f2937" stroke-width="2"/>
